@@ -77,5 +77,16 @@ namespace CapaPresentacion
 
 
         }
+
+        private void btnguardar_Click(object sender, EventArgs e)
+        {
+            dgvdata.Rows.Add(new object[] {"",txtid.Text, txtdocumento.Text,txtnombrecompleto.Text,txtcorreo.Text, txtclave.Text,
+                ((OpcionCombo)cborol.SelectedItem).Valor.ToString(),
+                ((OpcionCombo)cborol.SelectedItem).Texto.ToString(),
+                ((OpcionCombo)cboestado.SelectedItem).Valor.ToString(),
+                ((OpcionCombo)cboestado.SelectedItem).Texto.ToString(),
+
+            });
+        }
     }
 }
