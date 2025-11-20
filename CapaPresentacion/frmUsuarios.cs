@@ -70,12 +70,21 @@ namespace CapaPresentacion
             foreach (Rol item in listRol)
             {
                 cborol.Items.Add(new OpcionCombo() { Valor = item.IdRol, Texto = item.Descripcion });
-                cborol.DisplayMember = "Texto";
-                cborol.ValueMember = "Valor";
-                cborol.SelectedIndex = 0;
             }
+            cborol.DisplayMember = "Texto";
+            cborol.ValueMember = "Valor";
+            cborol.SelectedIndex = 0;
 
-
+            foreach (DataGridViewColumn columna in dgvdata.Columns)
+            {
+                if(columna.Visible == true && columna.Name != "btnseleccionar")
+                {
+                    cbobusqueda.Items.Add(new OpcionCombo() { Valor = columna.Name, Texto = columna.HeaderText });
+                }
+            }
+            cbobusqueda.DisplayMember = "Texto";
+            cbobusqueda.ValueMember = "Valor";
+            cbobusqueda.SelectedIndex = 0;
         }
 
         private void btnguardar_Click(object sender, EventArgs e)
@@ -87,6 +96,19 @@ namespace CapaPresentacion
                 ((OpcionCombo)cboestado.SelectedItem).Texto.ToString(),
 
             });
+            Limpiar();
+        }
+
+        private void Limpiar()
+        {
+            txtid.Text = "";
+            txtdocumento.Text = "";
+            txtnombrecompleto.Text = "";
+            txtcorreo.Text = "";
+            txtclave.Text = "";
+            txtconfirmarclave.Text = "";
+            cborol.SelectedIndex = 0;
+            cboestado.SelectedIndex = 0;
         }
     }
 }
